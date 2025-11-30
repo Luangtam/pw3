@@ -8,12 +8,15 @@ import MenuLateral from './MenuLateral'
 import Usuario from './Usuario'
 import UsuarioList from './UsuarioList'
 import UsuarioUpdate from './UsuarioUpdate'
-
+import Produto from './Produto'
+import ProdutoList from './ProdutoList'
+import ProdutoUpdate from './ProdutoUpdate'
 
 function Home() {
    
     const [page,setPage]  = useState('home');
     const [idUser,setIdUser]  = useState(1);
+    const [idProduto, setIdProduto] = useState(1)
 
     function renderContent() {
         if (page === 'home') { 
@@ -29,6 +32,17 @@ function Home() {
         if (page === 'updateusuario') {
             console.log('ID do usuário para atualizar:', idUser);
             return <UsuarioUpdate setCurrentPage={setPage} idUser={idUser} />;
+        }
+
+        if (page === 'produto') {
+            return <ProdutoList setCurrentPage={setPage} setIdProduto={setIdProduto}  />; 
+        }
+        if (page === 'newproduto') {
+            return <Produto setCurrentPage={setPage}/>;
+        }
+        if (page === 'updateproduto') {
+            console.log('ID do produto para atualizar:', idProduto); 
+            return <ProdutoUpdate setCurrentPage={setPage} idProduto={idProduto} />; 
         }
         
     }
