@@ -12,6 +12,21 @@ module.exports = class ClienteController {
         }
     }
 
+    static async listByParam(req, res) {
+            try {
+                const { name, email } = req.body;
+                const clientes = await Cliente.findAll({
+                    where: {
+                        name: { [Sequelize.Op.like]: `%${name}%` },
+                        email: { [Sequelize.Op.like]: `%${email}%` }
+                    }
+                });
+                res.status(200).json(clientes);
+            } catch (error) {
+                res.status(500).json({ error: 'Erro ao listar clientes' });
+            }
+    }
+
     static async getById(req, res) {
         const { id } = req.params;
         try {

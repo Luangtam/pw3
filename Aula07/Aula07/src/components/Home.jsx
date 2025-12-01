@@ -43,6 +43,16 @@ function Home() {
         if (page === 'updateproduto') {
             console.log('ID do produto para atualizar:', idProduto); 
             return <ProdutoUpdate setCurrentPage={setPage} idProduto={idProduto} />; 
+        if (page === 'cliente') {
+            return <ClienteList setCurrentPage={setPage} setIdCliente={setIdCliente}  />;
+        } 
+        if (page === 'newcliente') {
+            return <Cliente setCurrentPage={setPage}/>;
+        }
+        
+        if (page === 'updatecliente') {
+            console.log('ID do cliente para atualizar:', idCliente);
+            return <ClienteUpdate setCurrentPage={setPage} idCliente={idCliente} />;
         }
         
     }
